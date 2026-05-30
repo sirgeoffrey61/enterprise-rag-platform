@@ -1,0 +1,22 @@
+[
+  {"query": "What is anarchism?", "expected_type": "answerable", "topic": "politics"},
+  {"query": "Who was Albert Einstein?", "expected_type": "answerable", "topic": "science"},
+  {"query": "What was the Roman Empire?", "expected_type": "answerable", "topic": "history"},
+  {"query": "What is artificial intelligence?", "expected_type": "answerable", "topic": "technology"},
+  {"query": "Who was Augustus in Roman history?", "expected_type": "answerable", "topic": "history"},
+  {"query": "What is ancient Egypt known for?", "expected_type": "answerable", "topic": "history"},
+  {"query": "What is machine learning?", "expected_type": "answerable", "topic": "technology"},
+  {"query": "Who was Boudica?", "expected_type": "answerable", "topic": "history"},
+  {"query": "What is anarcho-capitalism?", "expected_type": "answerable", "topic": "politics"},
+  {"query": "Who was Alaric I?", "expected_type": "answerable", "topic": "history"},
+  {"query": "What is the population of Mars colony in 2024?", "expected_type": "unanswerable", "topic": "science"},
+  {"query": "Which company launched GPT-6 in 2025?", "expected_type": "unanswerable", "topic": "technology"},
+  {"query": "What was the GDP of Atlantis in 2023?", "expected_type": "unanswerable", "topic": "economics"},
+  {"query": "Who won the FIFA World Cup in 2030?", "expected_type": "unanswerable", "topic": "sports"},
+  {"query": "What is the battery life of iPhone 20?", "expected_type": "unanswerable", "topic": "technology"},
+  {"query": "How many people live on the Moon base Alpha?", "expected_type": "unanswerable", "topic": "science"},
+  {"query": "What caused the 2028 global quantum internet outage?", "expected_type": "unanswerable", "topic": "technology"},
+  {"query": "Who is the current king of the Roman Empire?", "expected_type": "unanswerable", "topic": "history"},
+  {"query": "What are the 2026 election results in Wakanda?", "expected_type": "unanswerable", "topic": "politics"},
+  {"query": "What is the latest census population of Middle-earth?", "expected_type": "unanswerable", "topic": "fiction"}
+]

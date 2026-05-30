@@ -1,0 +1,44 @@
+# Data and artifacts
+data/raw/
+data/processed/
+data/qdrant_storage/
+*.npy
+*.pkl
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Secrets and environment
+.env
+!.env.example
+
+# Evaluation outputs
+evaluation/results/
+
+# IDE and OS
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+Desktop.ini
+
+# Local infra binaries (optional large downloads)
+infra/redis/
+!infra/start_redis.ps1
+infra/qdrant/
+!infra/start_qdrant.ps1
+
+# Logs and dev scratch files
+*.log
+probe_torch.py
+verify_stats.py
+run_embed.bat
+test_write.txt

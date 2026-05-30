@@ -74,7 +74,7 @@ class EvaluationRunner:
                     time.sleep(2 ** attempt)
         raise last_error  # type: ignore[misc]
 
-    def run_benchmark(self) -> dict:
+    def run_benchmark(self, *, release_gpu_after: bool = True) -> dict:
         rows = self._load_queries()
         results: list[dict] = []
 
@@ -114,7 +114,7 @@ class EvaluationRunner:
                 }
             )
 
-        if getattr(self.retriever, "model", None) is not None:
+        if release_gpu_after and getattr(self.retriever, "model", None) is not None:
             release_hybrid_gpu(self.retriever)
 
         metrics = self._compute_metrics(results)

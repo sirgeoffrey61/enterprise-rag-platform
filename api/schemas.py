@@ -13,6 +13,14 @@ class AskRequest(BaseModel):
     candidate_k: int = Field(default=25, ge=1, le=100)
 
 
+class SourceChunk(BaseModel):
+    chunk_id: str
+    title: str
+    url: str | None = None
+    rerank_score: float | None = None
+    cited: bool = False
+
+
 class AskResponse(BaseModel):
     answer: str
     cited_chunk_ids: list[str]
@@ -20,6 +28,7 @@ class AskResponse(BaseModel):
     cache_hit: bool
     latency_ms: float
     trace_id: str
+    sources: list[SourceChunk] = Field(default_factory=list)
 
 
 class RetrieveRequest(BaseModel):
@@ -30,6 +39,7 @@ class RetrieveRequest(BaseModel):
 class RetrievedChunk(BaseModel):
     chunk_id: str
     title: str
+    url: str | None = None
     text: str
     rrf_score: float | None = None
     rerank_score: float | None = None

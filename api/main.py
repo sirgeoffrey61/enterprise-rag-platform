@@ -33,6 +33,7 @@ from api.schemas import (
     RetrieveResponse,
     RetrievedChunk,
     ServiceStatus,
+    SourceChunk,
 )
 from evaluation.benchmark import BENCHMARK_PATH, EvaluationRunner
 from observability.metrics import MetricsRecorder
@@ -188,6 +189,18 @@ async def ask(body: AskRequest) -> AskResponse:
 
     state.total_queries_served += 1
 
+    cited_ids = set(result.get("cited_chunk_ids", []))
+    sources = [
+        SourceChunk(
+            chunk_id=chunk["chunk_id"],
+            title=chunk["title"],
+            url=chunk.get("url"),
+            rerank_score=chunk.get("rerank_score"),
+            cited=chunk["chunk_id"] in cited_ids,
+        )
+        for chunk in result.get("raw_chunks", [])
+    ]
+
     return AskResponse(
         answer=result["answer"],
         cited_chunk_ids=result.get("cited_chunk_ids", []),
@@ -195,6 +208,7 @@ async def ask(body: AskRequest) -> AskResponse:
         cache_hit=bool(result.get("cache_hit", False)),
         latency_ms=latency_ms,
         trace_id=result.get("query_id", trace_id),
+        sources=sources,
     )
 
 
@@ -219,6 +233,7 @@ async def retrieve(body: RetrieveRequest) -> RetrieveResponse:
         RetrievedChunk(
             chunk_id=row["chunk_id"],
             title=row["title"],
+            url=row.get("url"),
             text=row["text"],
             rrf_score=row.get("rrf_score"),
             rerank_score=row.get("rerank_score"),
